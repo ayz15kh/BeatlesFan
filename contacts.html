@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Beatles - Контакты</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #000;
+            color: #fff;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Шапка */
+        header {
+            background: linear-gradient(to right, #000, #333);
+            padding: 30px 0;
+            text-align: center;
+            border-bottom: 3px solid #cc9900;
+            position: relative;
+        }
+        
+        .logo {
+            font-size: 48px;
+            font-weight: bold;
+            color: #cc9900;
+            text-shadow: 2px 2px 4px rgba(204, 153, 0, 0.3);
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 18px;
+            color: #ccc;
+        }
+        
+        /* Меню */
+        .menu {
+            background-color: #111;
+            padding: 15px 0;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(204, 153, 0, 0.2);
+        }
+        
+        .menu ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+        
+        .menu li {
+            margin: 0 10px;
+        }
+        
+        .menu a {
+            color: #fff;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: all 0.3s;
+            font-weight: bold;
+        }
+        
+        .menu a:hover {
+            background-color: #cc9900;
+            color: #000;
+            transform: translateY(-2px);
+        }
+        
+        /* Основной контент */
+        .content {
+            background-color: #111;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 0 15px rgba(204, 153, 0, 0.1);
+        }
+        
+        h1 {
+            color: #cc9900;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 36px;
+        }
+        
+        /* Контакты */
+        .contacts-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 30px 0;
+        }
+        
+        .contact-card {
+            background-color: #222;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid #333;
+            transition: all 0.3s;
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-5px);
+            border-color: #cc9900;
+            box-shadow: 0 5px 15px rgba(204, 153, 0, 0.2);
+        }
+        
+        .contact-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: #cc9900;
+        }
+        
+        .contact-title {
+            color: #cc9900;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .contact-info {
+            color: #fff;
+            font-size: 18px;
+            margin-bottom: 20px;
+            word-break: break-word;
+        }
+        
+        .contact-link {
+            display: inline-block;
+            background-color: #cc9900;
+            color: #000;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: all 0.3s;
+            margin-top: 10px;
+        }
+        
+        .contact-link:hover {
+            background-color: #fff;
+            transform: translateY(-2px);
+        }
+        
+        /* Соцсети */
+        .social-container {
+            background-color: #222;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 30px 0;
+            text-align: center;
+            border: 1px solid #333;
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .social-icon {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            color: #fff;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .social-icon:hover {
+            transform: scale(1.1);
+            background-color: #cc9900;
+            color: #000;
+        }
+        
+        /* Разделительная линия */
+        hr {
+            border: none;
+            height: 2px;
+            background: linear-gradient(to right, transparent, #cc9900, transparent);
+            margin: 30px 0;
+        }
+        
+        /* Футер */
+        footer {
+            background-color: #111;
+            padding: 20px;
+            text-align: center;
+            border-top: 2px solid #cc9900;
+            margin-top: 30px;
+            border-radius: 10px 10px 0 0;
+        }
+        
+        .copyright {
+            color: #ccc;
+            font-size: 14px;
+        }
+        
+        /* Анимации */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .content {
+            animation: fadeIn 1s;
+        }
+        
+        @keyframes glow {
+            0% { text-shadow: 0 0 5px rgba(204, 153, 0, 0.5); }
+            50% { text-shadow: 0 0 20px rgba(204, 153, 0, 0.8); }
+            100% { text-shadow: 0 0 5px rgba(204, 153, 0, 0.5); }
+        }
+        
+        .logo {
+            animation: glow 3s infinite;
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .menu ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .menu li {
+                margin: 5px 0;
+            }
+            
+            .logo {
+                font-size: 36px;
+            }
+            
+            h1 {
+                font-size: 28px;
+            }
+            
+            .contacts-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .social-icons {
+                gap: 20px;
+            }
+            
+            .social-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">THE BEATLES</div>
+            <div class="subtitle">Легендарная группа из Ливерпуля</div>
+        </header>
+        
+        <nav class="menu">
+            <ul>
+               <li><a href="index.html">Главная</a></li>
+                <li><a href="info.html">Общая информация</a></li>
+                <li><a href="history.html">История</a></li>
+                <li><a href="disc.html">Дискография</a></li>
+                <li><a href="film.html">Фильмография</a></li>
+                <li><a href="link.html">Источники</a></li>
+				<li><a href="shop.html">Заказать</a></li>
+				<li><a href="contacts.html">Контакты</a></li>
+            </ul>
+        </nav>
+        
+        <main class="content">
+            <h1>Контакты</h1>
+            
+            <div class="contacts-container">
+                <!-- Телефон -->
+                <div class="contact-card">
+                    <div class="contact-icon">📞</div>
+                    <div class="contact-title">Телефон</div>
+                    <div class="contact-info">+7 (999) 123-45-67</div>
+                    <a href="tel:+79991234567" class="contact-link">Позвонить</a>
+                </div>
+                
+                <!-- Email -->
+                <div class="contact-card">
+                    <div class="contact-icon">✉️</div>
+                    <div class="contact-title">Email</div>
+                    <div class="contact-info">info@beatles.com</div>
+                    <a href="mailto:info@beatles.com?subject=Вопрос о сайте The Beatles" class="contact-link">Написать</a>
+                </div>
+            </div>
+            
+            <!-- Соцсети -->
+            <div class="social-container">
+                <h2 style="color: #cc9900; margin-bottom: 20px;">Мы в социальных сетях</h2>
+                
+                <div class="social-icons">
+                    <!-- Telegram -->
+                    <a href="https://t.me/beatles_community" class="social-icon" target="_blank">
+                        <span>📱</span>
+                    </a>
+                    
+                    <!-- ВКонтакте -->
+                    <a href="https://vk.com/beatles" class="social-icon" target="_blank">
+                        <span>VK</span>
+                    </a>
+                </div>
+                
+                <p style="color: #ccc; margin-top: 20px; font-size: 14px;">
+                    Присоединяйтесь к нашему сообществу поклонников The Beatles
+                </p>
+            </div>
+            
+            <hr>
+            
+            <div style="background-color: #222; padding: 20px; border-radius: 10px; text-align: center;">
+                <h2 style="color: #cc9900; margin-bottom: 15px;">Часы работы</h2>
+                <p style="color: #ccc; margin-bottom: 10px;">Понедельник - Пятница: 10:00 - 19:00</p>
+                <p style="color: #ccc; margin-bottom: 10px;">Суббота: 11:00 - 17:00</p>
+                <p style="color: #ccc;">Воскресенье: выходной</p>
+            </div>
+        </main>
+        
+        <footer>
+            <div class="copyright">&copy; Все права защищены. Мустафина Н.А., БЭР2302. 2025</div>
+        </footer>
+    </div>
+</body>
+</html>

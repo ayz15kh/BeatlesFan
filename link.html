@@ -1,0 +1,425 @@
+
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Beatles - Источники</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #000;
+            color: #fff;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Шапка */
+        header {
+            background: linear-gradient(to right, #000, #333);
+            padding: 30px 0;
+            text-align: center;
+            border-bottom: 3px solid #cc9900;
+            position: relative;
+        }
+        
+        .logo {
+            font-size: 48px;
+            font-weight: bold;
+            color: #cc9900;
+            text-shadow: 2px 2px 4px rgba(204, 153, 0, 0.3);
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 18px;
+            color: #ccc;
+        }
+        
+        /* Меню */
+        .menu {
+            background-color: #111;
+            padding: 15px 0;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(204, 153, 0, 0.2);
+        }
+        
+        .menu ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+        
+        .menu li {
+            margin: 0 10px;
+        }
+        
+        .menu a {
+            color: #fff;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: all 0.3s;
+            font-weight: bold;
+        }
+        
+        .menu a:hover {
+            background-color: #cc9900;
+            color: #000;
+            transform: translateY(-2px);
+        }
+        
+        /* Основной контент */
+        .content {
+            background-color: #111;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 0 15px rgba(204, 153, 0, 0.1);
+        }
+        
+        h1 {
+            color: #cc9900;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 36px;
+        }
+        
+        h2 {
+            color: #cc9900;
+            margin: 30px 0 20px;
+            border-left: 4px solid #cc9900;
+            padding-left: 10px;
+        }
+        
+        /* Список источников */
+        .sources-list {
+            background-color: #222;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border: 1px solid #333;
+        }
+        
+        .source-item {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #333;
+        }
+        
+        .source-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .source-number {
+            background-color: #cc9900;
+            color: #000;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .source-title {
+            color: #fff;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .source-author {
+            color: #ccc;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        
+        .source-link {
+            color: #cc9900;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+            word-break: break-all;
+        }
+        
+        .source-link:hover {
+            color: #fff;
+            text-decoration: underline;
+        }
+        
+        .source-date {
+            color: #999;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+        
+        /* Разделы */
+        .sources-category {
+            margin: 30px 0;
+        }
+        
+        .category-title {
+            color: #cc9900;
+            font-size: 22px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .category-title::before {
+            content: "📚";
+            margin-right: 10px;
+            font-size: 18px;
+        }
+        
+        /* Книги */
+        .book-source {
+            background-color: #2a2a2a;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border-left: 4px solid #cc9900;
+        }
+        
+        /* Разделительная линия */
+        hr {
+            border: none;
+            height: 2px;
+            background: linear-gradient(to right, transparent, #cc9900, transparent);
+            margin: 30px 0;
+        }
+        
+        /* Футер */
+        footer {
+            background-color: #111;
+            padding: 20px;
+            text-align: center;
+            border-top: 2px solid #cc9900;
+            margin-top: 30px;
+            border-radius: 10px 10px 0 0;
+        }
+        
+        .copyright {
+            color: #ccc;
+            font-size: 14px;
+        }
+        
+        /* Анимации */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .content {
+            animation: fadeIn 1s;
+        }
+        
+        @keyframes glow {
+            0% { text-shadow: 0 0 5px rgba(204, 153, 0, 0.5); }
+            50% { text-shadow: 0 0 20px rgba(204, 153, 0, 0.8); }
+            100% { text-shadow: 0 0 5px rgba(204, 153, 0, 0.5); }
+        }
+        
+        .logo {
+            animation: glow 3s infinite;
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .menu ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .menu li {
+                margin: 5px 0;
+            }
+            
+            .logo {
+                font-size: 36px;
+            }
+            
+            h1 {
+                font-size: 28px;
+            }
+            
+            .source-title {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">THE BEATLES</div>
+            <div class="subtitle">Легендарная группа из Ливерпуля</div>
+        </header>
+        
+        <nav class="menu">
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="info.html">Общая информация</a></li>
+                <li><a href="history.html">История</a></li>
+                <li><a href="disc.html">Дискография</a></li>
+                <li><a href="film.html">Фильмография</a></li>
+                <li><a href="link.html">Источники</a></li>
+				<li><a href="shop.html">Заказать</a></li>
+				<li><a href="contacts.html">Контакты</a></li>
+            </ul>
+        </nav>
+        
+        <main class="content">
+            <h1>Источники информации</h1>
+            
+            <div class="sources-category">
+                <div class="category-title">Книги</div>
+                
+                <div class="sources-list">
+                    <div class="book-source">
+                        <div class="source-item">
+                            <span class="source-number">1</span>
+                            <div class="source-title">HTML справочник</div>
+                            <div class="source-author">Городулин В.</div>
+                            <div class="source-date">Москва, 2008</div>
+                        </div>
+                    </div>
+                    
+                    <div class="book-source">
+                        <div class="source-item">
+                            <span class="source-number">2</span>
+                            <div class="source-title">Самоучитель HTML</div>
+                            <div class="source-author">Комолова Н.В.</div>
+                            <div class="source-info">СПб.: Питер, 2009. – 272 с.: ил.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="sources-category">
+                <div class="category-title">Интернет-ресурсы</div>
+                
+                <div class="sources-list">
+                    <div class="source-item">
+                        <span class="source-number">3</span>
+                        <div class="source-title">Википедия. Свободная энциклопедия</div>
+                        <a href="http://ru.wikipedia.org" class="source-link" target="_blank">http://ru.wikipedia.org</a>
+                        <div class="source-date">Дата обращения: 20.09.2011</div>
+                    </div>
+                    
+                    <div class="source-item">
+                        <span class="source-number">4</span>
+                        <div class="source-title">Официальный сайт The Beatles</div>
+                        <a href="https://www.thebeatles.com" class="source-link" target="_blank">https://www.thebeatles.com</a>
+                        <div class="source-date">Официальный сайт группы</div>
+                    </div>
+                    
+                    <div class="source-item">
+                        <span class="source-number">5</span>
+                        <div class="source-title">The Beatles History</div>
+                        <a href="https://www.beatlesbible.com" class="source-link" target="_blank">https://www.beatlesbible.com</a>
+                        <div class="source-date">Энциклопедия The Beatles</div>
+                    </div>
+                    
+                    <div class="source-item">
+                        <span class="source-number">6</span>
+                        <div class="source-title">Rolling Stone: The Beatles</div>
+                        <a href="https://www.rollingstone.com/music/music-news/the-beatles-93719/" class="source-link" target="_blank">https://www.rollingstone.com/music/music-news/the-beatles-93719/</a>
+                        <div class="source-date">Статьи и материалы о группе</div>
+                    </div>
+                    
+                    <div class="source-item">
+                        <span class="source-number">7</span>
+                        <div class="source-title">AllMusic: The Beatles</div>
+                        <a href="https://www.allmusic.com/artist/the-beatles-mn0000754032" class="source-link" target="_blank">https://www.allmusic.com/artist/the-beatles-mn0000754032</a>
+                        <div class="source-date">Дискография и биография</div>
+                    </div>
+                    
+                    <div class="source-item">
+                        <span class="source-number">8</span>
+                        <div class="source-title">IMDb: The Beatles Filmography</div>
+                        <a href="https://www.imdb.com/name/nm1397313/" class="source-link" target="_blank">https://www.imdb.com/name/nm1397313/</a>
+                        <div class="source-date">Фильмография группы</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="sources-category">
+                <div class="category-title">Музыкальные ресурсы</div>
+                
+                <div class="sources-list">
+                    <div class="source-item">
+                        <span class="source-number">9</span>
+                        <div class="source-title">Spotify: The Beatles</div>
+                        <a href="https://open.spotify.com/artist/3WrFJ7ztbogyGnTHbHJFl2" class="source-link" target="_blank">https://open.spotify.com/artist/3WrFJ7ztbogyGnTHbHJFl2</a>
+                        <div class="source-date">Официальная страница на Spotify</div>
+                    </div>
+                    
+                    <div class="source-item">
+                        <span class="source-number">10</span>
+                        <div class="source-title">Apple Music: The Beatles</div>
+                        <a href="https://music.apple.com/us/artist/the-beatles/136975" class="source-link" target="_blank">https://music.apple.com/us/artist/the-beatles/136975</a>
+                        <div class="source-date">Официальная страница на Apple Music</div>
+                    </div>
+                    
+                    <div class="source-item">
+                        <span class="source-number">11</span>
+                        <div class="source-title">YouTube: The Beatles Official</div>
+                        <a href="https://www.youtube.com/channel/UCc4K7bAqpdBP8jh1j9XZAww" class="source-link" target="_blank">https://www.youtube.com/channel/UCc4K7bAqpdBP8jh1j9XZAww</a>
+                        <div class="source-date">Официальный YouTube канал</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="sources-category">
+                <div class="category-title">Фотографии и изображения</div>
+                
+                <div class="sources-list">
+                    <div class="source-item">
+                        <span class="source-number">12</span>
+                        <div class="source-title">Getty Images: The Beatles Archive</div>
+                        <a href="https://www.gettyimages.com/photos/the-beatles" class="source-link" target="_blank">https://www.gettyimages.com/photos/the-beatles</a>
+                        <div class="source-date">Фотоархив группы</div>
+                    </div>
+                    
+                    <div class="source-item">
+                        <span class="source-number">13</span>
+                        <div class="source-title">Pinterest: The Beatles Collections</div>
+                        <a href="https://www.pinterest.com/search/pins/?q=the%20beatles" class="source-link" target="_blank">https://www.pinterest.com/search/pins/?q=the%20beatles</a>
+                        <div class="source-date">Коллекции изображений</div>
+                    </div>
+                </div>
+            </div>
+            
+            <hr>
+            
+            <div style="background-color: #222; padding: 20px; border-radius: 10px; text-align: center;">
+                <h2 style="color: #cc9900; margin-bottom: 15px;">Всего источников: 13</h2>
+                <p style="color: #ccc; margin-bottom: 10px;">В работе над сайтом использовались книги, энциклопедии, официальные сайты и музыкальные ресурсы</p>
+                <p style="color: #999; font-size: 12px;">Сайт создан в учебных целях. Все права на материалы принадлежат их авторам.</p>
+            </div>
+        </main>
+        
+        <footer>
+            <div class="copyright">&copy; Все права защищены. Мустафина Н.А., БЭР2302. 2025</div>
+        </footer>
+    </div>
+</body>
+</html>

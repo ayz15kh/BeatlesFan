@@ -1,0 +1,442 @@
+
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Beatles - Общая информация</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #000;
+            color: #fff;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Шапка */
+        header {
+            background: linear-gradient(to right, #000, #333);
+            padding: 30px 0;
+            text-align: center;
+            border-bottom: 3px solid #cc9900;
+            position: relative;
+        }
+        
+        .logo {
+            font-size: 48px;
+            font-weight: bold;
+            color: #cc9900;
+            text-shadow: 2px 2px 4px rgba(204, 153, 0, 0.3);
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 18px;
+            color: #ccc;
+        }
+        
+        /* Меню */
+        .menu {
+            background-color: #111;
+            padding: 15px 0;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(204, 153, 0, 0.2);
+        }
+        
+        .menu ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+        
+        .menu li {
+            margin: 0 10px;
+        }
+        
+        .menu a {
+            color: #fff;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: all 0.3s;
+            font-weight: bold;
+        }
+        
+        .menu a:hover {
+            background-color: #cc9900;
+            color: #000;
+            transform: translateY(-2px);
+        }
+        
+        /* Основной контент */
+        .content {
+            background-color: #111;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 0 15px rgba(204, 153, 0, 0.1);
+        }
+        
+        h1 {
+            color: #cc9900;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 36px;
+        }
+        
+        h2 {
+            color: #cc9900;
+            margin: 25px 0 15px;
+            border-left: 4px solid #cc9900;
+            padding-left: 10px;
+        }
+        
+        /* Блоки информации */
+        .info-block {
+            background-color: #222;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border: 1px solid #333;
+        }
+        
+        .info-item {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #333;
+        }
+        
+        .info-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+        
+        .info-label {
+            color: #cc9900;
+            font-weight: bold;
+            display: inline-block;
+            width: 150px;
+        }
+        
+        /* Блоки с участниками */
+        .members-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+        
+        .member-card {
+            background-color: #222;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid #333;
+            transition: transform 0.3s ease;
+        }
+        
+        .member-card:hover {
+            transform: translateY(-5px);
+            border-color: #cc9900;
+        }
+        
+        .member-photo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin: 0 auto 15px;
+    border: 3px solid #cc9900;
+    overflow: hidden;
+    background: #333;
+    position: relative; /* Добавляем это */
+}
+
+.member-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center; /* Фокусируемся на лице */
+    display: block;
+}
+        }
+        
+        .member-name {
+            color: #cc9900;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .member-instruments {
+            color: #ccc;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        
+        .member-years {
+            color: #999;
+            font-size: 12px;
+        }
+        
+        /* Дополнительные участники */
+        .additional-members {
+            background-color: #222;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .additional-members ul {
+            padding-left: 20px;
+        }
+        
+        .additional-members li {
+            margin-bottom: 10px;
+            padding-left: 10px;
+        }
+        
+        .additional-members li::marker {
+            color: #cc9900;
+        }
+        
+        /* Разделительная линия */
+        hr {
+            border: none;
+            height: 2px;
+            background: linear-gradient(to right, transparent, #cc9900, transparent);
+            margin: 30px 0;
+        }
+        
+        /* Футер */
+        footer {
+            background-color: #111;
+            padding: 20px;
+            text-align: center;
+            border-top: 2px solid #cc9900;
+            margin-top: 30px;
+            border-radius: 10px 10px 0 0;
+        }
+        
+        .copyright {
+            color: #ccc;
+            font-size: 14px;
+        }
+        
+        /* Анимации */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .content {
+            animation: fadeIn 1s;
+        }
+        
+        @keyframes glow {
+            0% { text-shadow: 0 0 5px rgba(204, 153, 0, 0.5); }
+            50% { text-shadow: 0 0 20px rgba(204, 153, 0, 0.8); }
+            100% { text-shadow: 0 0 5px rgba(204, 153, 0, 0.5); }
+        }
+        
+        .logo {
+            animation: glow 3s infinite;
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .menu ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .menu li {
+                margin: 5px 0;
+            }
+            
+            .logo {
+                font-size: 36px;
+            }
+            
+            h1 {
+                font-size: 28px;
+            }
+            
+            .info-label {
+                width: 120px;
+            }
+            
+            .members-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .member-photo {
+                width: 120px;
+                height: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">THE BEATLES</div>
+            <div class="subtitle">Легендарная группа из Ливерпуля</div>
+        </header>
+        
+        <nav class="menu">
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="info.html">Общая информация</a></li>
+                <li><a href="history.html">История</a></li>
+                <li><a href="disc.html">Дискография</a></li>
+                <li><a href="film.html">Фильмография</a></li>
+                <li><a href="link.html">Источники</a></li>
+				<li><a href="shop.html">Заказать</a></li>
+				<li><a href="contacts.html">Контакты</a></li>
+            </ul>
+        </nav>
+        
+        <main class="content">
+            <h1>Общая информация</h1>
+            
+            <div class="info-block">
+                <div class="info-item">
+                    <span class="info-label">Название:</span>
+                    "The Beatles" ("Битлз" - отдельных участников ансамбля называют "битлами")
+                </div>
+                
+                <div class="info-item">
+                    <span class="info-label">Страна:</span>
+                    Великобритания (г. Ливерпуль)
+                </div>
+                
+                <div class="info-item">
+                    <span class="info-label">Годы активности:</span>
+                    1960-1970
+                </div>
+                
+                <div class="info-item">
+                    <span class="info-label">Жанр:</span>
+                    Рок, поп, бит, психоделический рок
+                </div>
+            </div>
+            
+            <h2>Основной состав группы</h2>
+            
+            <div class="members-grid">
+                <!-- Джон Леннон -->
+                <div class="member-card">
+                    <div class="member-photo">
+					<img src=https://www.billboard.com/wp-content/uploads/media/john-lennon-late-1960s-billboard-1548.jpg?w=1024>
+                        ДЖОН ЛЕННОН
+                    </div>
+                    <div class="member-name">Джон Леннон</div>
+                    <div class="member-instruments">Вокал, гитара, клавишные</div>
+                    <div class="member-years">1960-1970</div>
+                </div>
+                
+                <!-- Пол Маккартни -->
+                <div class="member-card">
+                    <div class="member-photo">
+					<img src=https://i.pinimg.com/originals/3b/cd/e9/3bcde99e045b49fc64074d0ed362c7ac.jpg>
+                        ПОЛ МАККАРТНИ
+                    </div>
+                    <div class="member-name">Пол Маккартни</div>
+                    <div class="member-instruments">Вокал, бас-гитара, клавишные</div>
+                    <div class="member-years">1960-1970</div>
+                </div>
+                
+                <!-- Джордж Харрисон -->
+                <div class="member-card">
+                    <div class="member-photo">
+					<img src=https://i.pinimg.com/originals/93/69/6d/93696d09080b400b83c432a7314e02f0.jpg>
+                        ДЖОРДЖ ХАРРИСОН
+                    </div>
+                    <div class="member-name">Джордж Харрисон</div>
+                    <div class="member-instruments">Гитара, вокал, ситар</div>
+                    <div class="member-years">1960-1970</div>
+                </div>
+                
+                <!-- Ринго Старр -->
+                <div class="member-card">
+                    <div class="member-photo">
+					<img src=https://i.pinimg.com/736x/c1/13/b5/c113b5121651083356b581fc307c3a77.jpg>
+                        РИНГО СТАРР
+                    </div>
+                    <div class="member-name">Ринго Старр</div>
+                    <div class="member-instruments">Ударные, вокал</div>
+                    <div class="member-years">1962-1970</div>
+                </div>
+            </div>
+            
+            <h2>Подробнее об участниках</h2>
+            
+            <div class="info-block">
+                <div class="info-item">
+                    <span class="info-label">Джон Леннон:</span>
+                    ритм-гитара, соло-гитара, клавишные, бубен, маракасы, бас-гитара, губная гармошка, вокал
+                </div>
+                
+                <div class="info-item">
+                    <span class="info-label">Пол Маккартни:</span>
+                    бас-гитара, клавишные, ударные, гитара, вокал
+                </div>
+                
+                <div class="info-item">
+                    <span class="info-label">Джордж Харрисон:</span>
+                    соло-гитара, ритм-гитара, ситар, бубен, клавишные, вокал
+                </div>
+                
+                <div class="info-item">
+                    <span class="info-label">Ринго Старр:</span>
+                    ударные, ритм-гитара, бубен, маракасы, ковбелл, бонги, клавишные, вокал
+                </div>
+            </div>
+            
+            <h2>Также в разное время в составе группы выступали:</h2>
+            
+            <div class="additional-members">
+                <ul>
+                    <li><strong>Пит Бест</strong> - ударные, вокал (1960-1962)</li>
+                    <li><strong>Стюарт Сатклифф</strong> - бас-гитара, вокал (1960-1961)</li>
+                    <li><strong>Джимми Никол</strong> - ударные (1964, временно заменял Ринго Старра)</li>
+                </ul>
+            </div>
+            
+            <div class="info-block">
+                <p>После распада группы, произошедшего в 1970 году, каждый из её участников начал сольную карьеру и добился значительных успехов в музыке.</p>
+            </div>
+            
+            <hr>
+            
+            <div class="info-block">
+                <h2>Достижения группы</h2>
+                <ul>
+                    <li>Более 1 миллиарда проданных пластинок по всему миру</li>
+                    <li>20 хитов, занимавших первое место в чарте Billboard Hot 100</li>
+                    <li>7 премий "Грэмми"</li>
+                    <li>Премия "Оскар" за лучшую оригинальную песню ("Let It Be")</li>
+                    <li>Включение в Зал славы рок-н-ролла (1988)</li>
+                </ul>
+            </div>
+        </main>
+        
+        <footer>
+            <div class="copyright">&copy; Все права защищены. Н.А.Мустафина, БЭР2302. 2025</div>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Beatles - Дискография</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #000;
+            color: #fff;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Шапка */
+        header {
+            background: linear-gradient(to right, #000, #333);
+            padding: 30px 0;
+            text-align: center;
+            border-bottom: 3px solid #cc9900;
+            position: relative;
+        }
+        
+        .logo {
+            font-size: 48px;
+            font-weight: bold;
+            color: #cc9900;
+            text-shadow: 2px 2px 4px rgba(204, 153, 0, 0.3);
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 18px;
+            color: #ccc;
+        }
+        
+        /* Меню */
+        .menu {
+            background-color: #111;
+            padding: 15px 0;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(204, 153, 0, 0.2);
+        }
+        
+        .menu ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+        
+        .menu li {
+            margin: 0 10px;
+        }
+        
+        .menu a {
+            color: #fff;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: all 0.3s;
+            font-weight: bold;
+        }
+        
+        .menu a:hover {
+            background-color: #cc9900;
+            color: #000;
+            transform: translateY(-2px);
+        }
+        
+        /* Основной контент */
+        .content {
+            background-color: #111;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 0 15px rgba(204, 153, 0, 0.1);
+        }
+        
+        h1 {
+            color: #cc9900;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 36px;
+        }
+        
+        h2 {
+            color: #cc9900;
+            margin: 30px 0 20px;
+            border-left: 4px solid #cc9900;
+            padding-left: 10px;
+        }
+        
+        /* Сетка альбомов */
+        .albums-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+        
+        .album-card {
+            background-color: #222;
+            border-radius: 10px;
+            padding: 20px;
+            border: 1px solid #333;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .album-card:hover {
+            transform: translateY(-5px);
+            border-color: #cc9900;
+            box-shadow: 0 5px 15px rgba(204, 153, 0, 0.2);
+        }
+        
+        .album-header {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+        
+        .album-cover {
+            width: 120px;
+            height: 120px;
+            border-radius: 5px;
+            border: 2px solid #cc9900;
+            overflow: hidden;
+            background: #333;
+            flex-shrink: 0;
+            margin-right: 15px;
+        }
+        
+        .album-cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .album-info {
+            flex: 1;
+        }
+        
+        .album-year {
+            background-color: #cc9900;
+            color: #000;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 8px;
+        }
+        
+        .album-title {
+            color: #fff;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .album-original {
+            color: #ccc;
+            font-size: 14px;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+        
+        /* Кнопка скачивания */
+        .download-btn {
+            display: inline-block;
+            background-color: #cc9900;
+            color: #000;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 14px;
+            transition: all 0.3s;
+            border: 1px solid #cc9900;
+        }
+        
+        .download-btn:hover {
+            background-color: transparent;
+            color: #cc9900;
+        }
+        
+        /* Треки */
+        .album-tracks {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #333;
+        }
+        
+        .tracks-title {
+            color: #cc9900;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        
+        .track-list {
+            font-size: 12px;
+            color: #ccc;
+            line-height: 1.4;
+        }
+        
+        .track-list div {
+            margin-bottom: 3px;
+        }
+        
+        /* Разделительная линия */
+        hr {
+            border: none;
+            height: 2px;
+            background: linear-gradient(to right, transparent, #cc9900, transparent);
+            margin: 30px 0;
+        }
+        
+        /* Футер */
+        footer {
+            background-color: #111;
+            padding: 20px;
+            text-align: center;
+            border-top: 2px solid #cc9900;
+            margin-top: 30px;
+            border-radius: 10px 10px 0 0;
+        }
+        
+        .copyright {
+            color: #ccc;
+            font-size: 14px;
+        }
+        
+        /* Анимации */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .content {
+            animation: fadeIn 1s;
+        }
+        
+        @keyframes glow {
+            0% { text-shadow: 0 0 5px rgba(204, 153, 0, 0.5); }
+            50% { text-shadow: 0 0 20px rgba(204, 153, 0, 0.8); }
+            100% { text-shadow: 0 0 5px rgba(204, 153, 0, 0.5); }
+        }
+        
+        .logo {
+            animation: glow 3s infinite;
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .menu ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .menu li {
+                margin: 5px 0;
+            }
+            
+            .logo {
+                font-size: 36px;
+            }
+            
+            h1 {
+                font-size: 28px;
+            }
+            
+            .album-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .album-cover {
+                margin: 0 auto 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">THE BEATLES</div>
+            <div class="subtitle">Легендарная группа из Ливерпуля</div>
+        </header>
+        
+        <nav class="menu">
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="info.html">Общая информация</a></li>
+                <li><a href="history.html">История</a></li>
+                <li><a href="disc.html">Дискография</a></li>
+                <li><a href="film.html">Фильмография</a></li>
+                <li><a href="link.html">Источники</a></li>
+				<li><a href="shop.html">Заказать</a></li>
+				<li><a href="contacts.html">Контакты</a></li>
+            </ul>
+        </nav>
+        
+        <main class="content">
+            <h1>Дискография</h1>
+            
+            <h2>1963</h2>
+            <div class="albums-grid">
+                <!-- Please Please Me -->
+                <div class="album-card">
+                    <div class="album-header">
+                        <div class="album-cover">
+                            <img src="https://lastfm.freetls.fastly.net/i/u/ar0/a70b31d8b03b4dad4ece1bcdebcf6ad9.jpg" alt="Please Please Me">
+                        </div>
+                        <div class="album-info">
+                            <div class="album-year">1963</div>
+                            <div class="album-title">Please Please Me</div>
+                            <div class="album-original">Please Please Me</div>
+                            <a href="https://rus.hitmotop.com/get/music/20210228/The_Beatles_Full_Album_Please_Please_Me_1963_72812782.mp3" class="download-btn">Скачать альбом</a>
+                        </div>
+                    </div>
+                    <div class="album-tracks">
+                        <div class="tracks-title">Основные треки:</div>
+                        <div class="track-list">
+                            <div>• I Saw Her Standing There</div>
+                            <div>• Misery</div>
+                            <div>• Anna (Go to Him)</div>
+                            <div>• Chains</div>
+                            <div>• Boys</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- With The Beatles -->
+                <div class="album-card">
+                    <div class="album-header">
+                        <div class="album-cover">
+                            <img src=https://www.picclickimg.com/j3sAAOSwGbxmY068/Beatles-Magnet.webp alt="With The Beatles">
+                        </div>
+                        <div class="album-info">
+                            <div class="album-year">1963</div>
+                            <div class="album-title">With The Beatles</div>
+                            <div class="album-original">With The Beatles</div>
+                            <a href="https://rus.hitmotop.com/get/music/20191222/The_Beatles_With_The_Beatles_albom_67706612.mp3" class="download-btn">Скачать альбом</a>
+                        </div>
+                    </div>
+                    <div class="album-tracks">
+                        <div class="tracks-title">Основные треки:</div>
+                        <div class="track-list">
+                            <div>• It Won't Be Long</div>
+                            <div>• All I've Got to Do</div>
+                            <div>• All My Loving</div>
+                            <div>• Don't Bother Me</div>
+                            <div>• Little Child</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <h2>1964</h2>
+            <div class="albums-grid">
+                <!-- A Hard Day's Night -->
+                <div class="album-card">
+                    <div class="album-header">
+                        <div class="album-cover">
+                            <img src=https://cdn0.youla.io/files/images/780_780/62/a6/62a6e96e4e074d264e20d4eb-1.jpg alt="A Hard Day's Night">
+                        </div>
+                        <div class="album-info">
+                            <div class="album-year">1964</div>
+                            <div class="album-title">Вечер трудного дня</div>
+                            <div class="album-original">A Hard Day's Night</div>
+                            <a href="https://example.com/beatles/hard-days-night.mp3" class="download-btn">Скачать альбом</a>
+                        </div>
+                    </div>
+                    <div class="album-tracks">
+                        <div class="tracks-title">Основные треки:</div>
+                        <div class="track-list">
+                            <div>• A Hard Day's Night</div>
+                            <div>• I Should Have Known Better</div>
+                            <div>• If I Fell</div>
+                            <div>• I'm Happy Just to Dance with You</div>
+                            <div>• And I Love Her</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Beatles For Sale -->
+                <div class="album-card">
+                    <div class="album-header">
+                        <div class="album-cover">
+                            <img src=https://avatars.mds.yandex.net/i?id=237f176c42d65858a36167e12f500ae8_l-4303190-images-thumbs&n=13 alt="Beatles For Sale">
+                        </div>
+                        <div class="album-info">
+                            <div class="album-year">1964</div>
+                            <div class="album-title">Beatles For Sale</div>
+                            <div class="album-original">Beatles For Sale</div>
+                            <a href="https://rus.hitmotop.com/get/music/20190331/The_Beatles_1964_Beatles_For_Sale_Full_Album_63188973.mp3" class="download-btn">Скачать альбом</a>
+                        </div>
+                    </div>
+                    <div class="album-tracks">
+                        <div class="tracks-title">Основные треки:</div>
+                        <div class="track-list">
+                            <div>• No Reply</div>
+                            <div>• I'm a Loser</div>
+                            <div>• Baby's in Black</div>
+                            <div>• Rock and Roll Music</div>
+                            <div>• I'll Follow the Sun</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <h2>1965</h2>
+            <div class="albums-grid">
+                <!-- Help! -->
+                <div class="album-card">
+                    <div class="album-header">
+                        <div class="album-cover">
+                            <img src=https://i.pinimg.com/736x/3c/35/5d/3c355de347b757ff596526f1605d326c.jpg alt="Help!">
+                        </div>
+                        <div class="album-info">
+                            <div class="album-year">1965</div>
+                            <div class="album-title">На помощь!</div>
+                            <div class="album-original">Help!</div>
+                            <a href="https://rus.hitmotop.com/get/music/20170901/The_Beatles_-Help_47950256.mp3" class="download-btn">Скачать альбом</a>
+                        </div>
+                    </div>
+                    <div class="album-tracks">
+                        <div class="tracks-title">Основные треки:</div>
+                        <div class="track-list">
+                            <div>• Help!</div>
+                            <div>• The Night Before</div>
+                            <div>• You've Got to Hide Your Love Away</div>
+                            <div>• I Need You</div>
+                            <div>• Yesterday</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Rubber Soul -->
+                <div class="album-card">
+                    <div class="album-header">
+                        <div class="album-cover">
+                            <img src=https://avatars.mds.yandex.net/i?id=799826b48932967e111a548e04ec329b3d0eda9e-9065979-images-thumbs&n=13 alt="Rubber Soul">
+                        </div>
+                        <div class="album-info">
+                            <div class="album-year">1965</div>
+                            <div class="album-title">Rubber Soul</div>
+                            <div class="album-original">Rubber Soul</div>
+                            <a href="https://rus.hitmotop.com/get/music/20190903/The_Beatles_Rubber_Soul_Album_66400256.mp3" class="download-btn">Скачать альбом</a>
+                        </div>
+                    </div>
+                    <div class="album-tracks">
+                        <div class="tracks-title">Основные треки:</div>
+                        <div class="track-list">
+                            <div>• Drive My Car</div>
+                            <div>• Norwegian Wood (This Bird Has Flown)</div>
+                            <div>• You Won't See Me</div>
+                            <div>• Nowhere Man</div>
+                            <div>• Think for Yourself</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <h2>1966-1970</h2>
+            <div class="albums-grid">
+                <!-- Revolver -->
+                <div class="album-card">
+                    <div class="album-header">
+                        <div class="album-cover">
+                            <img src=https://avatars.mds.yandex.net/i?id=da090a12f1e00ef7c45f63fdeb490ddd13018f3c-5488638-images-thumbs&n=13 alt="Revolver">
+                        </div>
+                        <div class="album-info">
+                            <div class="album-year">1966</div>
+                            <div class="album-title">Revolver</div>
+                            <div class="album-original">Revolver</div>
+                            <a href="https://example.com/beatles/revolver.mp3" class="download-btn">Скачать альбом</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Sgt. Pepper -->
+                <div class="album-card">
+                    <div class="album-header">
+                        <div class="album-cover">
+                            <img src=https://avatars.mds.yandex.net/i?id=cea14df28c8ad8c514edd7096b11ab3ccdbe4f41-4986689-images-thumbs&n=13 alt="Sgt. Pepper's">
+                        </div>
+                        <div class="album-info">
+                            <div class="album-year">1967</div>
+                            <div class="album-title">Оркестр клуба одиноких сердец</div>
+                            <div class="album-original">Sgt. Pepper's Lonely Hearts Club Band</div>
+                            <a href="https://example.com/beatles/sgt-pepper.mp3" class="download-btn">Скачать альбом</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- The White Album -->
+                <div class="album-card">
+                    <div class="album-header">
+                        <div class="album-cover">
+                            <img src=https://i.pinimg.com/originals/a9/92/84/a99284f14accd762d34375eb26a8da84.jpg alt="The Beatles">
+                        </div>
+                        <div class="album-info">
+                            <div class="album-year">1968</div>
+                            <div class="album-title">Белый альбом</div>
+                            <div class="album-original">The Beatles</div>
+                            <a href="https://example.com/beatles/white-album.mp3" class="download-btn">Скачать альбом</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Abbey Road -->
+                <div class="album-card">
+                    <div class="album-header">
+                        <div class="album-cover">
+                            <img src=https://lastfm.freetls.fastly.net/i/u/ar0/a4bbf73ba62024be279364e867b0ca20.jpg alt="Abbey Road">
+                        </div>
+                        <div class="album-info">
+                            <div class="album-year">1969</div>
+                            <div class="album-title">Эбби Роуд</div>
+                            <div class="album-original">Abbey Road</div>
+                            <a href="https://example.com/beatles/abbey-road.mp3" class="download-btn">Скачать альбом</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Let It Be -->
+                <div class="album-card">
+                    <div class="album-header">
+                        <div class="album-cover">
+                            <img src=https://i.pinimg.com/736x/8a/a8/5f/8aa85f36fbde78d8408ed6ea6052fb64.jpg alt="Let It Be">
+                        </div>
+                        <div class="album-info">
+                            <div class="album-year">1970</div>
+                            <div class="album-title">Пусть будет так</div>
+                            <div class="album-original">Let It Be</div>
+                            <a href="https://example.com/beatles/let-it-be.mp3" class="download-btn">Скачать альбом</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <hr>
+            
+            <div style="background-color: #222; padding: 20px; border-radius: 10px; text-align: center;">
+                <h2 style="color: #cc9900; margin-bottom: 15px;">Статистика</h2>
+                <p style="color: #ccc; margin-bottom: 10px;">Всего студийных альбомов: <strong>13</strong></p>
+                <p style="color: #ccc; margin-bottom: 10px;">Альбомов, занявших 1 место в чартах: <strong>11</strong></p>
+                <p style="color: #ccc; margin-bottom: 10px;">Синглов, занявших 1 место: <strong>20</strong></p>
+                <p style="color: #ccc;">Общие мировые продажи: <strong>более 1 миллиарда</strong></p>
+            </div>
+        </main>
+        
+        <footer>
+            <div class="copyright">&copy; Все права защищены. Н.А.Мустафина, БЭР2302. 2025</div>
+        </footer>
+    </div>
+</body>
+</html>

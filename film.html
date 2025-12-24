@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Beatles - Фильмография</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #000;
+            color: #fff;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Шапка */
+        header {
+            background: linear-gradient(to right, #000, #333);
+            padding: 30px 0;
+            text-align: center;
+            border-bottom: 3px solid #cc9900;
+            position: relative;
+        }
+        
+        .logo {
+            font-size: 48px;
+            font-weight: bold;
+            color: #cc9900;
+            text-shadow: 2px 2px 4px rgba(204, 153, 0, 0.3);
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 18px;
+            color: #ccc;
+        }
+        
+        /* Меню */
+        .menu {
+            background-color: #111;
+            padding: 15px 0;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(204, 153, 0, 0.2);
+        }
+        
+        .menu ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+        
+        .menu li {
+            margin: 0 10px;
+        }
+        
+        .menu a {
+            color: #fff;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: all 0.3s;
+            font-weight: bold;
+        }
+        
+        .menu a:hover {
+            background-color: #cc9900;
+            color: #000;
+            transform: translateY(-2px);
+        }
+        
+        /* Основной контент */
+        .content {
+            background-color: #111;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 0 15px rgba(204, 153, 0, 0.1);
+        }
+        
+        h1 {
+            color: #cc9900;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 36px;
+        }
+        
+        /* Таблица фильмов */
+        .films-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            background-color: #222;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .films-table th {
+            background-color: #cc9900;
+            color: #000;
+            padding: 15px;
+            text-align: left;
+            font-weight: bold;
+        }
+        
+        .films-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #333;
+        }
+        
+        .films-table tr:hover {
+            background-color: #2a2a2a;
+        }
+        
+        .film-poster {
+            width: 100px;
+            height: 120px;
+            border-radius: 5px;
+            border: 2px solid #cc9900;
+            overflow: hidden;
+            background: #333;
+        }
+        
+        .film-poster img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .film-type {
+            background-color: #cc9900;
+            color: #000;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        /* Блоки с фильмами для мобильных */
+        .film-card {
+            background-color: #222;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border: 1px solid #333;
+            display: none;
+        }
+        
+        .film-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .film-info {
+            margin-left: 15px;
+        }
+        
+        .film-title {
+            color: #cc9900;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .film-year {
+            color: #ccc;
+            font-size: 14px;
+        }
+        
+        .film-description {
+            color: #ccc;
+            line-height: 1.5;
+        }
+        
+        /* Разделительная линия */
+        hr {
+            border: none;
+            height: 2px;
+            background: linear-gradient(to right, transparent, #cc9900, transparent);
+            margin: 30px 0;
+        }
+        
+        /* Футер */
+        footer {
+            background-color: #111;
+            padding: 20px;
+            text-align: center;
+            border-top: 2px solid #cc9900;
+            margin-top: 30px;
+            border-radius: 10px 10px 0 0;
+        }
+        
+        .copyright {
+            color: #ccc;
+            font-size: 14px;
+        }
+        
+        /* Анимации */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .content {
+            animation: fadeIn 1s;
+        }
+        
+        @keyframes glow {
+            0% { text-shadow: 0 0 5px rgba(204, 153, 0, 0.5); }
+            50% { text-shadow: 0 0 20px rgba(204, 153, 0, 0.8); }
+            100% { text-shadow: 0 0 5px rgba(204, 153, 0, 0.5); }
+        }
+        
+        .logo {
+            animation: glow 3s infinite;
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .menu ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .menu li {
+                margin: 5px 0;
+            }
+            
+            .logo {
+                font-size: 36px;
+            }
+            
+            h1 {
+                font-size: 28px;
+            }
+            
+            .films-table {
+                display: none;
+            }
+            
+            .film-card {
+                display: block;
+            }
+            
+            .film-poster {
+                width: 80px;
+                height: 100px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">THE BEATLES</div>
+            <div class="subtitle">Легендарная группа из Ливерпуля</div>
+        </header>
+        
+        <nav class="menu">
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="info.html">Общая информация</a></li>
+                <li><a href="history.html">История</a></li>
+                <li><a href="disc.html">Дискография</a></li>
+                <li><a href="film.html">Фильмография</a></li>
+                <li><a href="link.html">Источники</a></li>
+				<li><a href="shop.html">Заказать</a></li>
+				<li><a href="contacts.html">Контакты</a></li>
+            </ul>
+        </nav>
+        
+        <main class="content">
+            <h1>Фильмография</h1>
+            
+            <!-- Таблица для десктопов -->
+            <table class="films-table">
+                <thead>
+                    <tr>
+                        <th>Год</th>
+                        <th>Русское название</th>
+                        <th>Оригинальное название</th>
+                        <th>Афиша</th>
+                        <th>Примечание</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1964</td>
+                        <td>Вечер трудного дня</td>
+                        <td>A Hard Day's Night</td>
+                        <td>
+                            <div class="film-poster">
+                                <img src="https://i.pinimg.com/736x/e2/fa/2d/e2fa2d8c82e19d57164090a1d134f2d9.jpg" alt="Вечер трудного дня">
+                            </div>
+                        </td>
+                        <td><span class="film-type">Х/ф</span></td>
+                    </tr>
+                    <tr>
+                        <td>1965</td>
+                        <td>На помощь!</td>
+                        <td>Help!</td>
+                        <td>
+                            <div class="film-poster">
+                                <img src="https://images.kinorium.com/movie/1080/2124880.jpg?1584562123" alt="На помощь!">
+                            </div>
+                        </td>
+                        <td><span class="film-type">Х/ф</span></td>
+                    </tr>
+                    <tr>
+                        <td>1967</td>
+                        <td>Волшебное таинственное путешествие</td>
+                        <td>Magical Mystery Tour</td>
+                        <td>
+                            <div class="film-poster">
+                                <img src="https://i.pinimg.com/736x/2c/94/31/2c9431b3362ee7ad59da0387815b285c.jpg" alt="Волшебное таинственное путешествие">
+                            </div>
+                        </td>
+                        <td><span class="film-type">Х/ф</span></td>
+                    </tr>
+                    <tr>
+                        <td>1968</td>
+                        <td>Жёлтая подводная лодка</td>
+                        <td>Yellow Submarine</td>
+                        <td>
+                            <div class="film-poster">
+                                <img src="https://wallpapers.com/images/hd/yellow-submarine-1527-x-2175-wallpaper-12e7fvv68z2zwp3q.jpg" alt="Жёлтая подводная лодка">
+                            </div>
+                        </td>
+                        <td><span class="film-type">Мультфильм</span></td>
+                    </tr>
+                    <tr>
+                        <td>1970</td>
+                        <td>Пусть будет так</td>
+                        <td>Let It Be</td>
+                        <td>
+                            <div class="film-poster">
+                                <img src="https://i.pinimg.com/736x/6e/cd/e7/6ecde7d9a5b834cc8bbc0bca075b6512.jpg" alt="Пусть будет так">
+                            </div>
+                        </td>
+                        <td><span class="film-type">Документальный</span></td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <!-- Карточки фильмов для мобильных -->
+            <div class="film-card">
+                <div class="film-header">
+                    <div class="film-poster">
+                        <img src="https://i.pinimg.com/736x/e2/fa/2d/e2fa2d8c82e19d57164090a1d134f2d9.jpg" alt="Вечер трудного дня">
+                    </div>
+                    <div class="film-info">
+                        <div class="film-title">Вечер трудного дня</div>
+                        <div class="film-year">1964 • A Hard Day's Night</div>
+                        <div><span class="film-type">Художественный фильм</span></div>
+                    </div>
+                </div>
+                <div class="film-description">
+                    Первый художественный фильм с участием The Beatles. Комедия, повествующая о нескольких днях из жизни группы.
+                </div>
+            </div>
+            
+            <div class="film-card">
+                <div class="film-header">
+                    <div class="film-poster">
+                        <img src="https://images.kinorium.com/movie/1080/2124880.jpg?1584562123" alt="На помощь!">
+                    </div>
+                    <div class="film-info">
+                        <div class="film-title">На помощь!</div>
+                        <div class="film-year">1965 • Help!</div>
+                        <div><span class="film-type">Художественный фильм</span></div>
+                    </div>
+                </div>
+                <div class="film-description">
+                    Второй фильм с участием The Beatles в главных ролях. Комедийный приключенческий фильм.
+                </div>
+            </div>
+            
+            <div class="film-card">
+                <div class="film-header">
+                    <div class="film-poster">
+                        <img src="https://i.pinimg.com/736x/2c/94/31/2c9431b3362ee7ad59da0387815b285c.jpg" alt="Волшебное таинственное путешествие">
+                    </div>
+                    <div class="film-info">
+                        <div class="film-title">Волшебное таинственное путешествие</div>
+                        <div class="film-year">1967 • Magical Mystery Tour</div>
+                        <div><span class="film-type">Художественный фильм</span></div>
+                    </div>
+                </div>
+                <div class="film-description">
+                    Телевизионный фильм, снятый самими участниками группы. Сюрреалистическая комедия.
+                </div>
+            </div>
+            
+            <div class="film-card">
+                <div class="film-header">
+                    <div class="film-poster">
+                        <img src="https://wallpapers.com/images/hd/yellow-submarine-1527-x-2175-wallpaper-12e7fvv68z2zwp3q.jpg" alt="Жёлтая подводная лодка">
+                    </div>
+                    <div class="film-info">
+                        <div class="film-title">Жёлтая подводная лодка</div>
+                        <div class="film-year">1968 • Yellow Submarine</div>
+                        <div><span class="film-type">Мультфильм</span></div>
+                    </div>
+                </div>
+                <div class="film-description">
+                    Анимационный музыкальный фильм с песнями The Beatles. Культовая работа в стиле поп-арт.
+                </div>
+            </div>
+            
+            <div class="film-card">
+                <div class="film-header">
+                    <div class="film-poster">
+                        <img src="https://i.pinimg.com/736x/6e/cd/e7/6ecde7d9a5b834cc8bbc0bca075b6512.jpg" alt="Пусть будет так">
+                    </div>
+                    <div class="film-info">
+                        <div class="film-title">Пусть будет так</div>
+                        <div class="film-year">1970 • Let It Be</div>
+                        <div><span class="film-type">Документальный фильм</span></div>
+                    </div>
+                </div>
+                <div class="film-description">
+                    Документальный фильм о записи одноимённого альбома. Показывает процесс распада группы.
+                </div>
+            </div>
+            
+            <hr>
+            
+            <div style="background-color: #222; padding: 20px; border-radius: 10px; text-align: center;">
+                <h2 style="color: #cc9900; margin-bottom: 15px;">Всего фильмов: 5</h2>
+                <p style="color: #ccc;">The Beatles снялись в 3 художественных фильмах, 1 мультфильме и 1 документальном фильме</p>
+            </div>
+        </main>
+        
+        <footer>
+            <div class="copyright">&copy; Все права защищены. Н.А.Мустафина, БЭР2302. 2025</div>
+        </footer>
+    </div>
+</body>
+</html>

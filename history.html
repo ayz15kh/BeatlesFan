@@ -1,0 +1,441 @@
+
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Beatles - История</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #000;
+            color: #fff;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Шапка */
+        header {
+            background: linear-gradient(to right, #000, #333);
+            padding: 30px 0;
+            text-align: center;
+            border-bottom: 3px solid #cc9900;
+            position: relative;
+        }
+        
+        .logo {
+            font-size: 48px;
+            font-weight: bold;
+            color: #cc9900;
+            text-shadow: 2px 2px 4px rgba(204, 153, 0, 0.3);
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 18px;
+            color: #ccc;
+        }
+        
+        /* Меню */
+        .menu {
+            background-color: #111;
+            padding: 15px 0;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(204, 153, 0, 0.2);
+        }
+        
+        .menu ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+        
+        .menu li {
+            margin: 0 10px;
+        }
+        
+        .menu a {
+            color: #fff;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: all 0.3s;
+            font-weight: bold;
+        }
+        
+        .menu a:hover {
+            background-color: #cc9900;
+            color: #000;
+            transform: translateY(-2px);
+        }
+        
+        /* Основной контент */
+        .content {
+            background-color: #111;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 0 15px rgba(204, 153, 0, 0.1);
+        }
+        
+        h1 {
+            color: #cc9900;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 36px;
+        }
+        
+        h2 {
+            color: #cc9900;
+            margin: 30px 0 15px;
+            border-left: 4px solid #cc9900;
+            padding-left: 10px;
+        }
+        
+        /* Оглавление */
+        .toc {
+            background-color: #222;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border: 1px solid #333;
+        }
+        
+        .toc h3 {
+            color: #cc9900;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .toc ul {
+            padding-left: 20px;
+        }
+        
+        .toc li {
+            margin-bottom: 8px;
+        }
+        
+        .toc a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .toc a:hover {
+            color: #cc9900;
+        }
+        
+        /* Исторические периоды */
+        .history-period {
+            background-color: #222;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border: 1px solid #333;
+            position: relative;
+        }
+        
+        .period-title {
+            color: #cc9900;
+            font-size: 24px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .period-title::before {
+            content: "▶";
+            color: #cc9900;
+            margin-right: 10px;
+            font-size: 18px;
+        }
+        
+        .period-years {
+            background-color: #cc9900;
+            color: #000;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-size: 14px;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+        
+        /* Кнопка "Наверх" */
+        .back-to-top {
+            text-align: center;
+            margin: 30px 0;
+        }
+        
+        .back-to-top a {
+            color: #cc9900;
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid #cc9900;
+            border-radius: 5px;
+            transition: all 0.3s;
+            font-weight: bold;
+        }
+        
+        .back-to-top a:hover {
+            background-color: #cc9900;
+            color: #000;
+        }
+        
+        /* Фото в истории */
+        .history-photo {
+            width: 200px;
+            height: 150px;
+            border-radius: 10px;
+            margin: 15px;
+            border: 2px solid #cc9900;
+            overflow: hidden;
+            background: #333;
+            float: right;
+        }
+        
+        .history-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+        }
+        
+        /* Разделительная линия */
+        hr {
+            border: none;
+            height: 2px;
+            background: linear-gradient(to right, transparent, #cc9900, transparent);
+            margin: 30px 0;
+            clear: both;
+        }
+        
+        /* Футер */
+        footer {
+            background-color: #111;
+            padding: 20px;
+            text-align: center;
+            border-top: 2px solid #cc9900;
+            margin-top: 30px;
+            border-radius: 10px 10px 0 0;
+        }
+        
+        .copyright {
+            color: #ccc;
+            font-size: 14px;
+        }
+        
+        /* Анимации */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .content {
+            animation: fadeIn 1s;
+        }
+        
+        @keyframes glow {
+            0% { text-shadow: 0 0 5px rgba(204, 153, 0, 0.5); }
+            50% { text-shadow: 0 0 20px rgba(204, 153, 0, 0.8); }
+            100% { text-shadow: 0 0 5px rgba(204, 153, 0, 0.5); }
+        }
+        
+        .logo {
+            animation: glow 3s infinite;
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .menu ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .menu li {
+                margin: 5px 0;
+            }
+            
+            .logo {
+                font-size: 36px;
+            }
+            
+            h1 {
+                font-size: 28px;
+            }
+            
+            .history-photo {
+                float: none;
+                margin: 15px auto;
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">THE BEATLES</div>
+            <div class="subtitle">Легендарная группа из Ливерпуля</div>
+        </header>
+        
+        <nav class="menu">
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="info.html">Общая информация</a></li>
+                <li><a href="history.html">История</a></li>
+                <li><a href="disc.html">Дискография</a></li>
+                <li><a href="film.html">Фильмография</a></li>
+                <li><a href="link.html">Источники</a></li>
+				<li><a href="shop.html">Заказать</a></li>
+				<li><a href="contacts.html">Контакты</a></li>
+            </ul>
+        </nav>
+        
+        <main class="content">
+            <h1>История группы <a name="top"></a></h1>
+            
+            <div class="toc">
+                <h3>Содержание</h3>
+                <ul>
+                    <li><a href="#start">Начало (1956—1960)</a></li>
+                    <li><a href="#name">Название группы</a></li>
+                    <li><a href="#first">Первые выступления</a></li>
+                    <li><a href="#contract">Первый контракт</a></li>
+                    <li><a href="#first-album">Первый альбом</a></li>
+                    <li><a href="#last">Последние альбомы и распад</a></li>
+                </ul>
+            </div>
+            
+            <div class="history-period">
+                <div class="period-title">
+                    НАЧАЛО <span class="period-years">1956—1960</span>
+                    <a name="start"></a>
+                </div>
+                
+                <div class="history-photo">
+                    <img src=https://i.pinimg.com/originals/cf/f2/e0/cff2e0a5e22505ea7ae51233e629206a.jpg>
+                    <div style="width:100%;height:100%;background:linear-gradient(45deg,#333,#555);display:flex;align-items:center;justify-content:center;color:#ccc;font-size:12px;text-align:center;">
+                        THE QUARRYMEN<br>1957 год
+                    </div>
+                </div>
+                
+                <p>Весной 1956 года Джон Леннон вместе с товарищами по школе основал группу «The Blackjacks», через неделю переименованную в The Quarrymen, названную так в честь их школы Quarry Bank High School.</p>
+                
+                <p>Летом 1957 года Леннон познакомился с 15-летним Полом Маккартни. Весной 1958 года для записей наступивший, а с осени — постоянно к ним присоединился друг Пола, Джордж Харрисон. Именно эти трое стали основным костяком группы, для остальных же участников Quarrymen музыка была временным увлечением, и вскоре они отпали от коллектива.</p>
+                
+                <p>В конце 1959 года в группу вошёл басист Стюарт Сатклифф. В таком виде состав коллектива оказался почти завершённым: Джон Леннон (вокал, ритм-гитара), Пол Маккартни (вокал, фортепиано, ритм-гитара), Джордж Харрисон (соло-гитара), Стюарт Сатклифф (бас-гитара).</p>
+            </div>
+            
+            <div class="history-period">
+                <div class="period-title">
+                    НАЗВАНИЕ ГРУППЫ <a name="name"></a>
+                </div>
+                
+                <p>Однако существовала проблема — отсутствие постоянного ударника, что заставляло музыкантов даже устраивать шуточные конкурсы, приглашая на сцену зрителей в качестве перкуссионистов.</p>
+                
+                <p>К тому времени группа активно пыталась участвовать в клубной и концертной жизни Ливерпуля и окрестностей. Солидные конкурсы талантов один за другим, но группе постоянно не везло. Подобные (и более серьёзные) мероприятия заставляли музыкантов задуматься о подходящем сценическом имени.</p>
+                
+                <p>Название "The Beatles" появилось в апреле 1960 года. По одной из версий, название придумал Джон Леннон, который хотел получить слово, имеющее двойной смысл - от слова "beat" (ритм, бит) и "beetles" (жуки).</p>
+            </div>
+            
+            <div class="history-period">
+                <div class="period-title">
+                    ПЕРВЫЕ ВЫСТУПЛЕНИЯ <span class="period-years">1960-1962</span>
+                    <a name="first"></a>
+                </div>
+                
+                <div class="history-photo">
+                     <img src=https://i.pinimg.com/736x/87/65/e9/8765e9e15e1b0dc65fc222c1bec1195f.jpg>
+                    <div style="width:100%;height:100%;background:linear-gradient(45deg,#333,#555);display:flex;align-items:center;justify-content:center;color:#ccc;font-size:12px;text-align:center;">
+                        THE BEATLES<br>в Гамбурге
+                    </div>
+                </div>
+                
+                <p>В августе 1960 года группа получила приглашение играть в Гамбурге. Для этого им был нужен ударник. Им стал Пит Бест, который играл в ливерпульской группе The Blackjacks.</p>
+                
+                <p>Первые концерты The Beatles в Гамбурге проходили в клубе "Indra", а затем в "Kaiserkeller". Выступления по 8 часов в день закалили группу и помогли выработать свой стиль.</p>
+                
+                <p>В 1961 году во время второго приезда в Гамбург они записали свою первую пластинку с Тони Шериданом. В это же время Стюарт Сатклифф познакомился с фотографом Астрид Кирхгерр, которая создала знаменитые стрижки "битловок".</p>
+            </div>
+            
+            <div class="history-period">
+                <div class="period-title">
+                    ПЕРВЫЙ КОНТРАКТ <span class="period-years">1962</span>
+                    <a name="contract"></a>
+                </div>
+                
+                <p>В 1962 году менеджер группы Брайан Эпштейн добился прослушивания в Decca Records, но группу не приняли. Однако Эпштейн продолжил поиски и в мае 1962 года добился контракта с EMI.</p>
+                
+                <p>Перед записью первого сингла было решено заменить ударника. В августе 1962 года Пита Беста заменил Ринго Старр, который играл в другой ливерпульской группе Rory Storm and the Hurricanes.</p>
+                
+                <p>5 октября 1962 года вышел первый сингл The Beatles - "Love Me Do"/"P.S. I Love You". Сингл достиг 17-го места в британском хит-параде.</p>
+            </div>
+            
+            <div class="history-period">
+                <div class="period-title">
+                    ПЕРВЫЙ АЛЬБОМ <span class="period-years">1963</span>
+                    <a name="first-album"></a>
+                </div>
+                
+                <div class="history-photo">
+                    <img src=https://avatars.mds.yandex.net/i?id=d1f6036bae9e716dccf191362efb95a1_l-4837630-images-thumbs&n=13>
+                    <div style="width:100%;height:100%;background:linear-gradient(45deg,#333,#555);display:flex;align-items:center;justify-content:center;color:#ccc;font-size:12px;text-align:center;">
+                        PLEASE PLEASE ME<br>первый альбом
+                    </div>
+                </div>
+                
+                <p>22 марта 1963 года вышел дебютный альбом Please Please Me. Альбом был записан почти за один день - 11 февраля 1963 года.</p>
+                
+                <p>Альбом занял первое место в британских чартах и держался там 30 недель. Успех альбома положил начало "битломании" в Великобритании.</p>
+                
+                <p>В 1963 году группа выпустила еще два альбома: With The Beatles и сингл "I Want To Hold Your Hand", который стал их первым хитом в США.</p>
+            </div>
+            
+            <div class="history-period">
+                <div class="period-title">
+                    ПОСЛЕДНИЕ АЛЬБОМЫ И РАСПАД <span class="period-years">1967-1970</span>
+                    <a name="last"></a>
+                </div>
+                
+                <p>В 1967 году вышел альбом Sgt. Pepper's Lonely Hearts Club Band, который считается одним из важнейших альбомов в истории рок-музыки.</p>
+                
+                <p>После смерти Брайана Эпштейна в 1967 году группа начала распадаться. Музыканты все больше занимались сольными проектами.</p>
+                
+                <p>В 1969 году был записан альбом Abbey Road, который стал последним альбомом, записанным всей группой вместе. В 1970 году вышел альбом Let It Be, но к тому времени группа уже фактически распалась.</p>
+                
+                <p>Официально о распаде The Beatles было объявлено 10 апреля 1970 года, когда Пол Маккартни заявил о своем уходе из группы.</p>
+            </div>
+            
+            <div class="back-to-top">
+                <a href="#top">Вернуться к содержанию</a>
+            </div>
+            
+            <hr>
+            
+            <div class="history-period">
+                <h2>Наследие The Beatles</h2>
+                <p>The Beatles оказали огромное влияние на развитие популярной музыки. Они изменили подход к записи альбомов, превратив их из сборников синглов в целостные художественные произведения.</p>
+                
+                <p>Группа получила 10 премий "Грэмми", а их альбомы до сих пор regularly переиздаются и пользуются популярностью у новых поколений слушателей.</p>
+            </div>
+        </main>
+        
+        <footer>
+            <div class="copyright">&copy; Все права защищены. Н.А.Мустафина, БЭР2302. 2025</div>
+        </footer>
+    </div>
+</body>
+</html>
